@@ -58,7 +58,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.reloadData()
             
             self.refreshControl.endRefreshing()
-            
             })
     }
     
