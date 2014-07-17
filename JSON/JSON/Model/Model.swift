@@ -9,24 +9,7 @@
 import Foundation
 
 class Model: NSObject {
-    struct Static {
-        static var token: dispatch_once_t = 0
-        static var instance: Model?
-    }
-    
-    class var sharedInstance: Model {
-    dispatch_once(&Static.token) {
-        Static.instance = Model()
-        }
-        
-        return Static.instance!
-    }
-    
-    init() {
-        assert(Static.instance == nil, "Class already initialised")
-    }
-    
-    func getClients(completion: (array: [Client]) -> Void) -> Void {
+    class func getClients(completion: (array: [Client]) -> Void) -> Void {
         
         var finalClientArray: [Client] = Array()
         

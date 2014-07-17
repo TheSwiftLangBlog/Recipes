@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     ///
     
     func reload() -> Void {
-        Model.sharedInstance.getClients({array in
+        Model.getClients({array in
             self.clientsArray = array;
             self.tableView.reloadData()
             
