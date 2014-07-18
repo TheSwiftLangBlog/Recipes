@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @lazy var refreshControl: UIRefreshControl = {
         let rc = UIRefreshControl()
+        
         rc.addTarget(self, action: "reload", forControlEvents: .ValueChanged)
         
         return rc
@@ -25,11 +26,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tv.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
         tv.delegate = self
         tv.dataSource = self
+        
         return tv
         }()
     
     @lazy var rightButton: UIBarButtonItem = {
         let right = UIBarButtonItem(title: "Reload!", style: .Plain, target: self, action: "reload")
+        
         return right
         }()
     
@@ -41,25 +44,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.rightBarButtonItem = rightButton
         
         self.title = "Client List"
-        
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     ///
     
-    func reload() -> Void {
-        Model.getClients({array in
-            self.clientsArray = array;
-            self.tableView.reloadData()
-            
-            self.refreshControl.endRefreshing()
-            })
+    func reload() {
+        self.clientsArray = Model.getClients()
+        tableView.reloadData()
+        refreshControl.endRefreshing()
     }
+    
+    
+    // Table View Data Source
     
     func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
         return 1
@@ -81,4 +77,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 }
+
+
 

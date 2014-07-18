@@ -12,12 +12,4 @@ class Client: NSObject {
     var name: String?
     var email: String?
     var company: String?
-    
-    init(name: String, email: String, company: String) {
-        self.name = name
-        self.email = email
-        self.company = company
-    }
-    
-    init() {}
 }
