@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var clientsArray: [Client] = Array()
     
-    @lazy var refreshControl: UIRefreshControl = {
+    lazy var refreshControl: UIRefreshControl = {
         let rc = UIRefreshControl()
         
         rc.addTarget(self, action: "reload", forControlEvents: .ValueChanged)
@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return rc
         }()
     
-    @lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tv = UITableView(frame: self.view.bounds, style: .Plain)
         
         tv.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Cell")
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return tv
         }()
     
-    @lazy var rightButton: UIBarButtonItem = {
+    lazy var rightButton: UIBarButtonItem = {
         let right = UIBarButtonItem(title: "Reload!", style: .Plain, target: self, action: "reload")
         
         return right
